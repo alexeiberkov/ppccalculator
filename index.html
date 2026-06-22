@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Extraction Cost Calculator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <h1>Document Extraction Cost Calculator</h1>
+
+      <div class="model-picker">
+        <label for="model-select">Model</label>
+        <select id="model-select" aria-label="Select LLM model">
+          <option value="sonnet-4-5">Sonnet 4.5</option>
+          <option value="sonnet-4-5-haiku-4-5">Sonnet 4.5 + Haiku 4.5</option>
+        </select>
+      </div>
+
+      <table class="info-table">
+        <tbody>
+          <tr>
+            <th scope="row">File name</th>
+            <td>D562F45DBAF81FD18DA0E8E6DAE4CC81.pdf</td>
+          </tr>
+          <tr>
+            <th scope="row">One PDF document</th>
+            <td>
+              Every PDF document is cached once, reducing repeated compute cost
+              across all prompts
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section class="pricing-section">
+        <h2>Pricing</h2>
+
+        <table
+          id="pricing-sonnet"
+          class="info-table pricing-table"
+          hidden
+        >
+          <tbody>
+            <tr>
+              <th scope="row">Input Cost Per Token</th>
+              <td>0.000003000</td>
+            </tr>
+            <tr>
+              <th scope="row">Input Caching Cost per token</th>
+              <td>0.000003750</td>
+            </tr>
+            <tr>
+              <th scope="row">Output Cost Per Token</th>
+              <td>0.000015000</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Output Caching / Cache Read Cost Per Token
+              </th>
+              <td>0.000000300</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table
+          id="pricing-hybrid"
+          class="info-table pricing-table pricing-table--hybrid"
+          hidden
+        >
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Sonnet 4.5</th>
+              <th scope="col">Haiku 4.5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Input Cost Per Token</th>
+              <td>0.000003000</td>
+              <td>0.000003000</td>
+            </tr>
+            <tr>
+              <th scope="row">Input Caching Cost per token</th>
+              <td>0.000003750</td>
+              <td>0.00000125</td>
+            </tr>
+            <tr>
+              <th scope="row">Output Cost Per Token</th>
+              <td>0.000015000</td>
+              <td>0.000005000</td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Output Caching / Cache Read Cost Per Token
+              </th>
+              <td>0.000000300</td>
+              <td>0.000000100</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

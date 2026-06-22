@@ -1,0 +1,10 @@
+{
+  "id": "sonnet-4-5-haiku-4-5",
+  "name": "Sonnet 4.5 + Haiku 4.5",
+  "type": "hybrid",
+  "sonnetPrompts": 1,
+  "models": {
+    "sonnet": "sonnet-4-5",
+    "haiku": "haiku-4-5"
+  }
+}

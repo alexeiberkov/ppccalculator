@@ -1,0 +1,7 @@
+{
+  "fileName": "D562F45DBAF81FD18DA0E8E6DAE4CC81.pdf",
+  "inputTokens": 48200,
+  "outputTokensPerPrompt": 1800,
+  "promptCount": 12,
+  "cacheNote": "Every PDF document is cached once, reducing repeated compute cost across all prompts"
+}

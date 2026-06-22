@@ -1,0 +1,8 @@
+{
+  "id": "haiku-4-5",
+  "name": "Haiku 4.5",
+  "inputPricePerMillion": 1.0,
+  "outputPricePerMillion": 5.0,
+  "cacheWritePricePerMillion": 1.25,
+  "cacheReadPricePerMillion": 0.1
+}

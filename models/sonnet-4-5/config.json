@@ -1,0 +1,8 @@
+{
+  "id": "sonnet-4-5",
+  "name": "Sonnet 4.5",
+  "inputPricePerMillion": 3.0,
+  "outputPricePerMillion": 15.0,
+  "cacheWritePricePerMillion": 3.75,
+  "cacheReadPricePerMillion": 0.3
+}
