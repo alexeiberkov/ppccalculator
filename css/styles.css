@@ -24,26 +24,6 @@ h1 {
   font-weight: 700;
 }
 
-.model-picker {
-  margin-bottom: 1.5rem;
-}
-
-.model-picker label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-.model-picker select {
-  width: 100%;
-  max-width: 320px;
-  padding: 0.5rem 0.75rem;
-  font: inherit;
-  border: 1px solid #999;
-  border-radius: 0;
-  background: #fff;
-}
-
 .info-table {
   width: 100%;
   border-collapse: collapse;
@@ -59,31 +39,147 @@ h1 {
 }
 
 .info-table th {
-  width: 34%;
   font-weight: 700;
   background: #fafafa;
 }
 
-.info-table td {
+.info-table:not(.two-column-table) th {
+  width: 34%;
+}
+
+.info-table:not(.two-column-table) td {
   width: 66%;
 }
 
-.pricing-section {
+.fields-config-table {
+  margin-top: 0;
+}
+
+.two-column-table th,
+.two-column-table td {
+  width: auto;
+}
+
+.two-column-table thead th {
+  font-weight: 700;
+  background: #fafafa;
+}
+
+.two-column-table select,
+.two-column-table input[type="number"]:not(.cost-input input),
+.info-table input[type="number"]:not(.cost-input input) {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  border: 1px solid #999;
+  border-radius: 0;
+  background: #fff;
+}
+
+.cost-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #999;
+  background: #fff;
+}
+
+.cost-input__prefix {
+  padding: 0.5rem 0 0.5rem 0.75rem;
+  font: inherit;
+}
+
+.cost-input input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 0.25rem;
+  font: inherit;
+  border: none;
+  background: transparent;
+}
+
+.cost-input input:focus {
+  outline: none;
+}
+
+.content-section {
   margin-top: 1.5rem;
 }
 
-.pricing-section h2 {
+.content-section h2,
+.subsection-heading {
   margin: 0 0 0.75rem;
   font-size: 1.125rem;
   font-weight: 700;
 }
 
-.pricing-table--hybrid th,
-.pricing-table--hybrid td {
-  width: auto;
+.subsection-heading {
+  margin-top: 1.25rem;
 }
 
-.pricing-table--hybrid thead th {
+.formula-value {
+  margin-right: 0.35rem;
+}
+
+.formula-hint {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  border: 1px solid #999;
+  border-radius: 50%;
+  font-size: 0.75rem;
   font-weight: 700;
-  background: #fafafa;
+  line-height: 1;
+  cursor: help;
+  user-select: none;
+}
+
+.formula-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.4rem);
+  z-index: 1;
+  width: max-content;
+  max-width: 16rem;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid #999;
+  background: #fff;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.formula-hint:hover .formula-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+[hidden] {
+  display: none;
+}
+
+.extraction-summary {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: #0b3d6e;
+  background: #e8f4fd;
+  border: 1px solid #7eb8e8;
+}
+
+#extraction-invoices-monthly {
+  color: #1558a8;
+}
+
+#extraction-total-cost {
+  color: #0a6b3a;
 }
