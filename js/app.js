@@ -92,6 +92,35 @@ function updatePricingTable() {
     });
 }
 
+function getFieldCount(column) {
+  return column === "mandatory"
+    ? Number(mandatoryFields.value) || 0
+    : Number(optionalFields.value) || 0;
+}
+
+function columnReceivesDocumentSize(column) {
+  const mandatory = Number(mandatoryFields.value) || 0;
+  const optional = Number(optionalFields.value) || 0;
+  if (mandatory > 0) return column === "mandatory";
+  if (optional > 0) return column === "optional";
+  return false;
+}
+
+function getOcrCostForColumn(column) {
+  const mandatory = Number(mandatoryFields.value) || 0;
+  const optional = Number(optionalFields.value) || 0;
+  const mandatoryOcr = Number(mandatoryEstimatedOcrCost.value) || 0;
+  const optionalOcr = Number(optionalEstimatedOcrCost.value) || 0;
+
+  if (mandatory === 0 && optional === 0) return 0;
+  if (mandatory > 0 && optional > 0) {
+    return column === "mandatory" ? mandatoryOcr : 0;
+  }
+  if (column === "mandatory" && mandatory > 0) return mandatoryOcr;
+  if (column === "optional" && optional > 0) return optionalOcr;
+  return 0;
+}
+
 function calcGroups(fieldsCount, factor) {
   const factorNum = Number(factor) || 0;
   if (factorNum === 0) return 0;
@@ -111,30 +140,38 @@ function getColumnGroups() {
 }
 
 function updateInputTokensTable() {
-  const { mandatory, optional } = getColumnGroups();
+  const { mandatory, optional, mandatoryFields: mFields, optionalFields: oFields } =
+    getColumnGroups();
 
   updateModelTableHeaders("input-tokens-table", "data-input-tokens-header");
 
   const soPerGroup = Number(soTokensPerGroup.value) || 0;
   const documentSize = Number(documentSizeTokens.value) || 0;
 
-  const mandatorySoTotal = soPerGroup * mandatory;
-  const optionalSoTotal = soPerGroup * optional;
+  const mandatorySoTotal = mFields > 0 ? soPerGroup * mandatory : 0;
+  const optionalSoTotal = oFields > 0 ? soPerGroup * optional : 0;
+  const mandatoryDocSize =
+    mFields > 0 && columnReceivesDocumentSize("mandatory") ? documentSize : 0;
+  const optionalDocSize =
+    oFields > 0 && columnReceivesDocumentSize("optional") ? documentSize : 0;
 
-  document.querySelector('[data-groups="mandatory"]').textContent = mandatory;
-  document.querySelector('[data-groups="optional"]').textContent = optional;
+  document.querySelector('[data-groups="mandatory"]').textContent =
+    mFields > 0 ? mandatory : 0;
+  document.querySelector('[data-groups="optional"]').textContent =
+    oFields > 0 ? optional : 0;
   document.querySelector('[data-so-total="mandatory"]').textContent =
     mandatorySoTotal;
   document.querySelector('[data-so-total="optional"]').textContent =
     optionalSoTotal;
   document.querySelector('[data-total-tokens="mandatory"]').textContent =
-    mandatorySoTotal + documentSize;
+    mandatorySoTotal + mandatoryDocSize;
   document.querySelector('[data-total-tokens="optional"]').textContent =
-    optionalSoTotal + documentSize;
+    optionalSoTotal + optionalDocSize;
 }
 
 function updateOutputTokensTable() {
-  const { mandatory, optional } = getColumnGroups();
+  const { mandatory, optional, mandatoryFields: mFields, optionalFields: oFields } =
+    getColumnGroups();
 
   updateModelTableHeaders("output-tokens-table", "data-output-tokens-header");
 
@@ -146,12 +183,14 @@ function updateOutputTokensTable() {
   const mandatoryGrouping = Number(mandatoryGroupingFactor.value) || 0;
   const optionalGrouping = Number(optionalGroupingFactor.value) || 0;
 
-  const mandatoryThinkingTotal = thinkingPerPrompt * mandatory;
-  const optionalThinkingTotal = thinkingPerPrompt * optional;
+  const mandatoryThinkingTotal =
+    mFields > 0 ? thinkingPerPrompt * mandatory : 0;
+  const optionalThinkingTotal =
+    oFields > 0 ? thinkingPerPrompt * optional : 0;
   const mandatorySoOutputTotal =
-    mandatorySoOutputPerField * mandatoryGrouping * mandatory;
+    mFields > 0 ? mandatorySoOutputPerField * mandatoryGrouping * mandatory : 0;
   const optionalSoOutputTotal =
-    optionalSoOutputPerField * optionalGrouping * optional;
+    oFields > 0 ? optionalSoOutputPerField * optionalGrouping * optional : 0;
 
   document.querySelector('[data-thinking-budget-total="mandatory"]').textContent =
     mandatoryThinkingTotal;
@@ -177,13 +216,17 @@ function getPricingNumbers(modelId) {
   };
 }
 
-function getInputTotalTokens(groups) {
+function getInputTotalTokens(groups, column, fieldCount) {
+  if (fieldCount === 0) return 0;
   const soPerGroup = Number(soTokensPerGroup.value) || 0;
-  const documentSize = Number(documentSizeTokens.value) || 0;
+  const documentSize = columnReceivesDocumentSize(column)
+    ? Number(documentSizeTokens.value) || 0
+    : 0;
   return soPerGroup * groups + documentSize;
 }
 
-function getOutputTotalTokens(column, groups) {
+function getOutputTotalTokens(column, groups, fieldCount) {
+  if (fieldCount === 0) return 0;
   const thinkingPerPrompt = Number(thinkingBudgetPerPrompt.value) || 0;
   const grouping =
     column === "mandatory"
@@ -221,6 +264,19 @@ function updateExtractionSummary(invoicesMonthly, totalCostSum) {
     formatCost(totalCostSum);
 }
 
+function clearEstimatedCostColumn(column) {
+  [
+    "oneTimeInput",
+    "promptInput",
+    "cachedInput",
+    "outputCost",
+    "totalCostPerDocument",
+    "inputCostTotal",
+    "outputCostMonthly",
+    "totalCost",
+  ].forEach((key) => setEstimatedCost(key, column, 0));
+}
+
 function updateEstimatedCostTable() {
   updateModelTableHeaders("estimated-cost-table", "data-estimated-cost-header");
 
@@ -235,14 +291,17 @@ function updateEstimatedCostTable() {
   let totalCostSum = 0;
 
   ["mandatory", "optional"].forEach((column) => {
-    const ocrCost =
-      column === "mandatory"
-        ? Number(mandatoryEstimatedOcrCost.value) || 0
-        : Number(optionalEstimatedOcrCost.value) || 0;
+    const fieldCount = getFieldCount(column);
+    if (fieldCount === 0) {
+      clearEstimatedCostColumn(column);
+      return;
+    }
+
+    const ocrCost = getOcrCostForColumn(column);
     const groups = column === "mandatory" ? mandatory : optional;
     const pricing = getPricingNumbers(models[column]);
-    const inputTotalTokens = getInputTotalTokens(groups);
-    const outputTotalTokens = getOutputTotalTokens(column, groups);
+    const inputTotalTokens = getInputTotalTokens(groups, column, fieldCount);
+    const outputTotalTokens = getOutputTotalTokens(column, groups, fieldCount);
 
     const oneTimeInput = inputTotalTokens * pricing.inputCaching;
     const promptInput = promptSize * groups * pricing.inputCost;

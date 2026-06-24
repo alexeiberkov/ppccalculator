@@ -279,7 +279,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Fields number / Grouping factor
+                    ceil(Fields number / Grouping factor)
                   </span>
                 </span>
               </td>
@@ -288,7 +288,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Fields number / Grouping factor
+                    ceil(Fields number / Grouping factor)
                   </span>
                 </span>
               </td>
@@ -300,8 +300,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    (Groups × SO tokens per group) + Average document size
-                    (tokens)
+                    (Groups × SO tokens per group) + document size (once per
+                    PDF; included here when this column is active)
                   </span>
                 </span>
               </td>
@@ -310,8 +310,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    (Groups × SO tokens per group) + Average document size
-                    (tokens)
+                    (Groups × SO tokens per group) + document size (once per
+                    PDF; included here when this column is active)
                   </span>
                 </span>
               </td>
@@ -461,7 +461,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Total tokens × Input Caching Cost per token
+                    Input Total tokens × Input Caching Cost per token
                   </span>
                 </span>
               </td>
@@ -474,7 +474,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Total tokens × Input Caching Cost per token
+                    Input Total tokens × Input Caching Cost per token
                   </span>
                 </span>
               </td>
@@ -519,8 +519,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Groups × Total tokens × Output Caching / Cache Read Cost
-                    Per Token
+                    Groups × Input Total tokens × Output Caching / Cache Read
+                    Cost Per Token
                   </span>
                 </span>
               </td>
@@ -533,8 +533,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Groups × Total tokens × Output Caching / Cache Read Cost
-                    Per Token
+                    Groups × Input Total tokens × Output Caching / Cache Read
+                    Cost Per Token
                   </span>
                 </span>
               </td>
@@ -550,7 +550,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Total tokens × Output Cost Per Token
+                    Output Total tokens × Output Cost Per Token
                   </span>
                 </span>
               </td>
@@ -563,7 +563,7 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Total tokens × Output Cost Per Token
+                    Output Total tokens × Output Cost Per Token
                   </span>
                 </span>
               </td>
@@ -635,7 +635,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Output Cost per document</th>
+              <th scope="row">Output Cost monthly</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -705,8 +705,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Input Cost Total + Output Cost per document + Estimated OCR
-                    Cost
+                    Input Cost Total + Output Cost monthly + Estimated OCR Cost
+                    (OCR counted once per document)
                   </span>
                 </span>
               </td>
@@ -719,8 +719,8 @@
                 <span class="formula-hint" aria-label="Show formula">
                   ?
                   <span class="formula-tooltip">
-                    Input Cost Total + Output Cost per document + Estimated OCR
-                    Cost
+                    Input Cost Total + Output Cost monthly + Estimated OCR Cost
+                    (OCR counted once per document)
                   </span>
                 </span>
               </td>
