@@ -8,12 +8,14 @@ One-page calculator for document extraction cost by LLM model.
 models/
   sonnet-4-5/config.json              # Sonnet 4.5 pricing
   haiku-4-5/config.json               # Haiku 4.5 pricing (used by hybrid)
+  gpt-5-4-mini/config.json            # GPT-5.4 mini pricing
+  gpt-5-4-nano/config.json            # GPT-5.4 nano pricing
   sonnet-4-5-haiku-4-5/config.json    # hybrid option config
 data/client.json                      # client document inputs
 index.html                            # page with model selector + cost table
 ```
 
-Available model options: **Sonnet 4.5** and **Sonnet 4.5 + Haiku 4.5**.
+Available model options: **Sonnet 4.5**, **Haiku 4.5**, **GPT-5.4 mini**, and **GPT-5.4 nano**.
 
 ## Local preview
 

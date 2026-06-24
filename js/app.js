@@ -1,6 +1,8 @@
 const MODEL_NAMES = {
   "sonnet-4-5": "Sonnet 4.5",
   "haiku-4-5": "Haiku 4.5",
+  "gpt-5-4-mini": "GPT-5.4 mini",
+  "gpt-5-4-nano": "GPT-5.4 nano",
 };
 
 const PRICING = {
@@ -15,6 +17,18 @@ const PRICING = {
     inputCaching: "0.00000125",
     outputCost: "0.000005000",
     outputCaching: "0.000000100",
+  },
+  "gpt-5-4-mini": {
+    inputCost: "0.000000750",
+    inputCaching: "0.000000750",
+    outputCost: "0.000004500",
+    outputCaching: "0.000000075",
+  },
+  "gpt-5-4-nano": {
+    inputCost: "0.000000200",
+    inputCaching: "0.000000200",
+    outputCost: "0.000001250",
+    outputCaching: "0.000000020",
   },
 };
 

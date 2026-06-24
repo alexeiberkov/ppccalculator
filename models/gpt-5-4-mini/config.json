@@ -1,0 +1,8 @@
+{
+  "id": "gpt-5-4-mini",
+  "name": "GPT-5.4 mini",
+  "inputPricePerMillion": 0.75,
+  "outputPricePerMillion": 4.5,
+  "cacheWritePricePerMillion": 0.75,
+  "cacheReadPricePerMillion": 0.075
+}
