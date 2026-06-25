@@ -66,8 +66,8 @@ h1 {
 }
 
 .two-column-table select,
-.two-column-table input[type="number"]:not(.cost-input input),
-.info-table input[type="number"]:not(.cost-input input) {
+.two-column-table input[type="number"]:not(.cost-input input):not(.percent-input input),
+.info-table input[type="number"]:not(.cost-input input):not(.percent-input input) {
   width: 100%;
   padding: 0.5rem 0.75rem;
   font: inherit;
@@ -98,6 +98,28 @@ h1 {
 
 .cost-input input:focus {
   outline: none;
+}
+
+.percent-input {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+
+.percent-input input {
+  width: 4rem;
+  padding: 0;
+  font: inherit;
+  border: none;
+  background: transparent;
+}
+
+.percent-input input:focus {
+  outline: none;
+}
+
+.percent-input__suffix {
+  font: inherit;
 }
 
 .content-section {

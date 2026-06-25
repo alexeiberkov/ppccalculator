@@ -66,7 +66,7 @@ const PARAM_ROW_HINTS = {
   },
   "fields-number": {
     description:
-      "How many fields this column extracts per document. Set to 0 to disable the column and exclude it from totals.",
+      "How many fields this column extracts per document. Set to 0 to exclude it from cost totals.",
   },
   "input-cost": {
     description:
@@ -182,11 +182,17 @@ const PARAM_ROW_HINTS = {
     description:
       "Estimated OCR cost per document. Counted once per PDF when both columns are active.",
   },
+  discount: {
+    description:
+      "Percentage discount applied to Total cost for both mandatory and optional columns.",
+    formula:
+      "Total cost = (Input Cost Total + Output Cost monthly + Estimated OCR Cost) × (1 − Discount / 100)",
+  },
   "total-cost": {
     description:
-      "Monthly total for this column: input cost total, output cost monthly, and OCR where applicable.",
+      "Monthly total for this column after discount: input cost total, output cost monthly, and OCR where applicable.",
     formula:
-      "Input Cost Total + Output Cost monthly + Estimated OCR Cost (OCR counted once per document)",
+      "(Input Cost Total + Output Cost monthly + Estimated OCR Cost) × (1 − Discount / 100)",
   },
 };
 
@@ -246,18 +252,12 @@ const mandatoryEstimatedOcrCost = document.getElementById(
 const optionalEstimatedOcrCost = document.getElementById(
   "optional-estimated-ocr-cost"
 );
+const discountPercent = document.getElementById("discount-percent");
 
-function updateColumnVisibility() {
-  const mandatory = Number(mandatoryFields.value) || 0;
-  const optional = Number(optionalFields.value) || 0;
-
-  document.querySelectorAll('[data-column="mandatory"]').forEach((cell) => {
-    cell.hidden = mandatory === 0;
-  });
-
-  document.querySelectorAll('[data-column="optional"]').forEach((cell) => {
-    cell.hidden = optional === 0;
-  });
+function getDiscountFactor() {
+  const percent = Number(discountPercent.value) || 0;
+  const clamped = Math.min(100, Math.max(0, percent));
+  return 1 - clamped / 100;
 }
 
 function updateModelTableHeaders(tableId, headerAttr) {
@@ -486,6 +486,7 @@ function updateEstimatedCostTable() {
   const promptSize = Number(promptSizeTokens.value) || 0;
   const invoicesMonthly =
     (Number(invoicesDay.value) || 0) * (Number(workingDays.value) || 0);
+  const discountFactor = getDiscountFactor();
   let totalCostSum = 0;
 
   ["mandatory", "optional"].forEach((column) => {
@@ -522,12 +523,10 @@ function updateEstimatedCostTable() {
     );
     setEstimatedCost("inputCostTotal", column, inputCostTotal);
     setEstimatedCost("outputCostMonthly", column, outputCostMonthly);
-    setEstimatedCost(
-      "totalCost",
-      column,
-      inputCostTotal + outputCostMonthly + ocrCost
-    );
-    totalCostSum += inputCostTotal + outputCostMonthly + ocrCost;
+    const baseTotalCost = inputCostTotal + outputCostMonthly + ocrCost;
+    const totalCost = baseTotalCost * discountFactor;
+    setEstimatedCost("totalCost", column, totalCost);
+    totalCostSum += totalCost;
   });
 
   updateExtractionSummary(invoicesMonthly, totalCostSum);
@@ -544,7 +543,6 @@ function updateStatisticsTable() {
   document.querySelector('[data-stat="fields-total"]').textContent =
     mandatory + optional;
 
-  updateColumnVisibility();
   updatePricingTable();
   updateInputTokensTable();
   updateOutputTokensTable();
@@ -572,6 +570,7 @@ function updateView() {
   optionalFields,
   mandatoryEstimatedOcrCost,
   optionalEstimatedOcrCost,
+  discountPercent,
 ].forEach((control) => {
   control.addEventListener("input", updateView);
   control.addEventListener("change", updateView);
