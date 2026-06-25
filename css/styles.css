@@ -163,6 +163,17 @@ h1 {
   visibility: visible;
 }
 
+.info-table th[scope="row"] .param-hint {
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+.info-table th[scope="row"] .param-tooltip {
+  left: 0;
+  transform: none;
+  max-width: 18rem;
+}
+
 [hidden] {
   display: none;
 }

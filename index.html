@@ -32,7 +32,7 @@
         <table class="info-table" id="statistics-table">
           <tbody>
             <tr>
-              <th scope="row">Average number of invoices day</th>
+              <th scope="row" data-param-hint="invoices-day">Average number of invoices day</th>
               <td>
                 <input
                   id="invoices-day"
@@ -44,7 +44,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Working days number</th>
+              <th scope="row" data-param-hint="working-days">Working days number</th>
               <td>
                 <input
                   id="working-days"
@@ -56,7 +56,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Average number of invoices monthly</th>
+              <th scope="row" data-param-hint="invoices-monthly">Average number of invoices monthly</th>
               <td>
                 <span class="formula-value" data-stat="invoices-monthly"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -68,7 +68,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Average document size (tokens)</th>
+              <th scope="row" data-param-hint="document-size-tokens">Average document size (tokens)</th>
               <td>
                 <input
                   id="document-size-tokens"
@@ -80,7 +80,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">One document contains aprx. pages</th>
+              <th scope="row" data-param-hint="document-pages">One document contains aprx. pages</th>
               <td>
                 <input
                   id="document-pages"
@@ -92,7 +92,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Fields number</th>
+              <th scope="row" data-param-hint="fields-total">Fields number</th>
               <td>
                 <span class="formula-value" data-stat="fields-total"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -124,7 +124,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Model</th>
+            <th scope="row" data-param-hint="model">Model</th>
             <td data-column="mandatory">
               <select id="mandatory-model" aria-label="Model for mandatory fields">
                 <option value="sonnet-4-5">Sonnet 4.5</option>
@@ -143,7 +143,7 @@
             </td>
           </tr>
           <tr>
-            <th scope="row">Fields number</th>
+            <th scope="row" data-param-hint="fields-number">Fields number</th>
             <td data-column="mandatory">
               <input
                 id="mandatory-fields"
@@ -177,22 +177,22 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Input Cost Per Token</th>
+              <th scope="row" data-param-hint="input-cost">Input Cost Per Token</th>
               <td data-column="mandatory" data-pricing="inputCost"></td>
               <td data-column="optional" data-pricing="inputCost"></td>
             </tr>
             <tr>
-              <th scope="row">Input Caching Cost per token</th>
+              <th scope="row" data-param-hint="input-caching">Input Caching Cost per token</th>
               <td data-column="mandatory" data-pricing="inputCaching"></td>
               <td data-column="optional" data-pricing="inputCaching"></td>
             </tr>
             <tr>
-              <th scope="row">Output Cost Per Token</th>
+              <th scope="row" data-param-hint="output-cost">Output Cost Per Token</th>
               <td data-column="mandatory" data-pricing="outputCost"></td>
               <td data-column="optional" data-pricing="outputCost"></td>
             </tr>
             <tr>
-              <th scope="row">
+              <th scope="row" data-param-hint="output-caching">
                 Output Caching / Cache Read Cost Per Token
               </th>
               <td data-column="mandatory" data-pricing="outputCaching"></td>
@@ -212,7 +212,7 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">SO tokens per group</th>
+              <th scope="row" data-param-hint="so-tokens-per-group">SO tokens per group</th>
               <td colspan="2">
                 <input
                   id="so-tokens-per-group"
@@ -224,7 +224,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">SO total tokens</th>
+              <th scope="row" data-param-hint="so-total-tokens">SO total tokens</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-so-total="mandatory"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -245,7 +245,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Prompt size (tokens)</th>
+              <th scope="row" data-param-hint="prompt-size">Prompt size (tokens)</th>
               <td colspan="2">
                 <input
                   id="prompt-size-tokens"
@@ -257,7 +257,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Grouping factor</th>
+              <th scope="row" data-param-hint="grouping-factor">Grouping factor</th>
               <td data-column="mandatory">
                 <input
                   id="mandatory-grouping-factor"
@@ -278,7 +278,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Groups</th>
+              <th scope="row" data-param-hint="groups">Groups</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-groups="mandatory"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -299,7 +299,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Total tokens</th>
+              <th scope="row" data-param-hint="input-total-tokens">Total tokens</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-total-tokens="mandatory"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -335,7 +335,7 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Thinking Budget per prompt</th>
+              <th scope="row" data-param-hint="thinking-budget-per-prompt">Thinking Budget per prompt</th>
               <td colspan="2">
                 <input
                   id="thinking-budget-per-prompt"
@@ -347,7 +347,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Thinking Budget total</th>
+              <th scope="row" data-param-hint="thinking-budget-total">Thinking Budget total</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -374,7 +374,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">SO output tokens per field</th>
+              <th scope="row" data-param-hint="so-output-per-field">SO output tokens per field</th>
               <td data-column="mandatory">
                 <input
                   id="mandatory-so-output-tokens-per-field"
@@ -395,7 +395,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">SO output tokens total</th>
+              <th scope="row" data-param-hint="so-output-total">SO output tokens total</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-so-output-total="mandatory"></span>
                 <span class="formula-hint" aria-label="Show formula">
@@ -416,7 +416,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Total tokens</th>
+              <th scope="row" data-param-hint="output-total-tokens">Total tokens</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -456,7 +456,7 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row">One Time Input Cost per document</th>
+              <th scope="row" data-param-hint="one-time-input">One Time Input Cost per document</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -485,7 +485,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Prompt Input Cost per document</th>
+              <th scope="row" data-param-hint="prompt-input">Prompt Input Cost per document</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -514,7 +514,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Cached Input Cost per document</th>
+              <th scope="row" data-param-hint="cached-input">Cached Input Cost per document</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -545,7 +545,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Output Cost per document</th>
+              <th scope="row" data-param-hint="output-cost-doc">Output Cost per document</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -574,7 +574,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Total Cost Per Document</th>
+              <th scope="row" data-param-hint="total-cost-per-document">Total Cost Per Document</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -607,7 +607,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Input Cost Total</th>
+              <th scope="row" data-param-hint="input-cost-total">Input Cost Total</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -640,7 +640,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Output Cost monthly</th>
+              <th scope="row" data-param-hint="output-cost-monthly">Output Cost monthly</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
@@ -671,7 +671,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Estimated OCR Cost</th>
+              <th scope="row" data-param-hint="ocr-cost">Estimated OCR Cost</th>
               <td data-column="mandatory">
                 <div class="cost-input">
                   <span class="cost-input__prefix" aria-hidden="true">$</span>
@@ -700,7 +700,7 @@
               </td>
             </tr>
             <tr>
-              <th scope="row">Total cost</th>
+              <th scope="row" data-param-hint="total-cost">Total cost</th>
               <td data-column="mandatory">
                 <span
                   class="formula-value"
