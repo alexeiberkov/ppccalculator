@@ -171,7 +171,19 @@ h1 {
 .info-table th[scope="row"] .param-tooltip {
   left: 0;
   transform: none;
-  max-width: 18rem;
+  max-width: 20rem;
+}
+
+.param-tooltip__description {
+  display: block;
+}
+
+.param-tooltip__formula {
+  display: block;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #ccc;
+  font-weight: 700;
 }
 
 [hidden] {

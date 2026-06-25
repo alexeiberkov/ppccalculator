@@ -59,12 +59,6 @@
               <th scope="row" data-param-hint="invoices-monthly">Average number of invoices monthly</th>
               <td>
                 <span class="formula-value" data-stat="invoices-monthly"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Average number of invoices day × Working days number
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -95,13 +89,6 @@
               <th scope="row" data-param-hint="fields-total">Fields number</th>
               <td>
                 <span class="formula-value" data-stat="fields-total"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Fields number (Mandatory fields) + Fields number (Optional
-                    fields)
-                  </span>
-                </span>
               </td>
             </tr>
           </tbody>
@@ -227,21 +214,9 @@
               <th scope="row" data-param-hint="so-total-tokens">SO total tokens</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-so-total="mandatory"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    SO tokens per group × Groups
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span class="formula-value" data-so-total="optional"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    SO tokens per group × Groups
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -281,44 +256,18 @@
               <th scope="row" data-param-hint="groups">Groups</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-groups="mandatory"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    ceil(Fields number / Grouping factor)
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span class="formula-value" data-groups="optional"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    ceil(Fields number / Grouping factor)
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
               <th scope="row" data-param-hint="input-total-tokens">Total tokens</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-total-tokens="mandatory"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    (Groups × SO tokens per group) + document size (once per
-                    PDF; included here when this column is active)
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span class="formula-value" data-total-tokens="optional"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    (Groups × SO tokens per group) + document size (once per
-                    PDF; included here when this column is active)
-                  </span>
-                </span>
               </td>
             </tr>
           </tbody>
@@ -353,24 +302,12 @@
                   class="formula-value"
                   data-thinking-budget-total="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Groups × Thinking Budget per prompt
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
                   class="formula-value"
                   data-thinking-budget-total="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Groups × Thinking Budget per prompt
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -398,21 +335,9 @@
               <th scope="row" data-param-hint="so-output-total">SO output tokens total</th>
               <td data-column="mandatory">
                 <span class="formula-value" data-so-output-total="mandatory"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    SO output tokens per field × Grouping factor × Groups
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span class="formula-value" data-so-output-total="optional"></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    SO output tokens per field × Grouping factor × Groups
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -422,24 +347,12 @@
                   class="formula-value"
                   data-output-total-tokens="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Thinking Budget total + SO output tokens total
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
                   class="formula-value"
                   data-output-total-tokens="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Thinking Budget total + SO output tokens total
-                  </span>
-                </span>
               </td>
             </tr>
           </tbody>
@@ -463,12 +376,6 @@
                   data-estimated-cost="oneTimeInput"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Input Total tokens × Input Caching Cost per token
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -476,12 +383,6 @@
                   data-estimated-cost="oneTimeInput"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Input Total tokens × Input Caching Cost per token
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -492,12 +393,6 @@
                   data-estimated-cost="promptInput"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Prompt size (tokens) × Groups × Input Cost Per Token
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -505,12 +400,6 @@
                   data-estimated-cost="promptInput"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Prompt size (tokens) × Groups × Input Cost Per Token
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -521,13 +410,6 @@
                   data-estimated-cost="cachedInput"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Groups × Input Total tokens × Output Caching / Cache Read
-                    Cost Per Token
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -535,13 +417,6 @@
                   data-estimated-cost="cachedInput"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Groups × Input Total tokens × Output Caching / Cache Read
-                    Cost Per Token
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -552,12 +427,6 @@
                   data-estimated-cost="outputCost"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Output Total tokens × Output Cost Per Token
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -565,12 +434,6 @@
                   data-estimated-cost="outputCost"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Output Total tokens × Output Cost Per Token
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -581,14 +444,6 @@
                   data-estimated-cost="totalCostPerDocument"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    One Time Input Cost per document + Prompt Input Cost per
-                    document + Cached Input Cost per document + Output Cost per
-                    document
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -596,14 +451,6 @@
                   data-estimated-cost="totalCostPerDocument"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    One Time Input Cost per document + Prompt Input Cost per
-                    document + Cached Input Cost per document + Output Cost per
-                    document
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -614,14 +461,6 @@
                   data-estimated-cost="inputCostTotal"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    (One Time Input Cost per document + Prompt Input Cost per
-                    document + Cached Input Cost per document) × Average number
-                    of invoices monthly
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -629,14 +468,6 @@
                   data-estimated-cost="inputCostTotal"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    (One Time Input Cost per document + Prompt Input Cost per
-                    document + Cached Input Cost per document) × Average number
-                    of invoices monthly
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -647,13 +478,6 @@
                   data-estimated-cost="outputCostMonthly"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Output Cost per document × Average number of invoices
-                    monthly
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -661,13 +485,6 @@
                   data-estimated-cost="outputCostMonthly"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Output Cost per document × Average number of invoices
-                    monthly
-                  </span>
-                </span>
               </td>
             </tr>
             <tr>
@@ -707,13 +524,6 @@
                   data-estimated-cost="totalCost"
                   data-column-value="mandatory"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Input Cost Total + Output Cost monthly + Estimated OCR Cost
-                    (OCR counted once per document)
-                  </span>
-                </span>
               </td>
               <td data-column="optional">
                 <span
@@ -721,13 +531,6 @@
                   data-estimated-cost="totalCost"
                   data-column-value="optional"
                 ></span>
-                <span class="formula-hint" aria-label="Show formula">
-                  ?
-                  <span class="formula-tooltip">
-                    Input Cost Total + Output Cost monthly + Estimated OCR Cost
-                    (OCR counted once per document)
-                  </span>
-                </span>
               </td>
             </tr>
           </tbody>
