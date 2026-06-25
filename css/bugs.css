@@ -1,0 +1,74 @@
+/* Fly & mosquito photos: pngimg.com (CC BY-NC 4.0), transparent PNG */
+
+.bugs-idle {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.bugs-idle--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bugs-idle--fleeing .bugs-idle__sprite {
+  animation-duration: 0.04s;
+}
+
+.bugs-idle__insect {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+.bugs-idle__sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: bugs-idle-buzz 0.1s ease-in-out infinite;
+}
+
+.bugs-idle__insect--mosquito .bugs-idle__sprite {
+  width: 2.75rem;
+  height: auto;
+  animation-duration: 0.12s;
+}
+
+.bugs-idle__insect--fly .bugs-idle__sprite {
+  width: 2.25rem;
+  height: auto;
+  animation-duration: 0.08s;
+}
+
+.bugs-idle__insect--fast .bugs-idle__sprite {
+  animation-duration: 0.05s;
+}
+
+.bugs-idle__insect--stationary .bugs-idle__sprite {
+  animation-duration: 0.16s;
+}
+
+@keyframes bugs-idle-buzz {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -0.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bugs-idle {
+    display: none !important;
+  }
+}
