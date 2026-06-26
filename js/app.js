@@ -286,7 +286,7 @@ function updatePricingTable() {
     .forEach((cell) => {
       const column = cell.dataset.column;
       const key = cell.dataset.pricing;
-      cell.textContent = formatCost(Number(PRICING[models[column]][key]));
+      cell.textContent = formatTokenPrice(Number(PRICING[models[column]][key]));
     });
 }
 
@@ -441,6 +441,15 @@ function getOutputTotalTokens(column, groups, fieldCount) {
 }
 
 function formatCost(amount) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
+
+function formatTokenPrice(amount) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
